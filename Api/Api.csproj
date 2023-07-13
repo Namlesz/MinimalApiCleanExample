@@ -9,11 +9,13 @@
 
     <ItemGroup>
       <PackageReference Include="MediatR" Version="12.1.1" />
+      <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Endpoints\Endpoints.Todos\Endpoints.Todos.csproj" />
-      <ProjectReference Include="..\Endpoints\Endpoints.User\Endpoints.User.csproj" />
+      <ProjectReference Include="..\Endpoints\Todos\Todos.csproj" />
+      <ProjectReference Include="..\Endpoints\User\User.csproj" />
     </ItemGroup>
 
 </Project>

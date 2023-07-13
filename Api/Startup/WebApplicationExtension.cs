@@ -4,7 +4,7 @@ namespace CleanMinimalApiExample.Startup;
 
 public static class WebApplicationExtension
 {
-    public static void MapEndpoints(this WebApplication app)
+    public static WebApplication MapEndpoints(this WebApplication app)
     {
         var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
@@ -18,5 +18,14 @@ public static class WebApplicationExtension
             var instance = Activator.CreateInstance(classe) as IEndpoints;
             instance?.EndpointsMapper(app);
         }
+
+        return app;
+    }
+
+    public static WebApplication UseSwaggerConfig(this WebApplication app)
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+        return app;
     }
 }
