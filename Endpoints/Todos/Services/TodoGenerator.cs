@@ -1,19 +1,10 @@
+using Endpoints.Todo.Models;
+
 namespace Endpoints.Todo.Services;
 
-public class Todos
+internal static class TodoGenerator
 {
-    public int Id { get; set; }
-
-    public string? Title { get; set; }
-
-    public DateOnly? DueBy { get; set; }
-
-    public bool IsComplete { get; set; }
-}
-
-static class TodoGenerator
-{
-    private static readonly (string[] Prefixes, string[] Suffixes)[] _parts = new[]
+    private readonly static (string[] Prefixes, string[] Suffixes)[] Parts =
     {
         (new[]
         {
@@ -40,13 +31,13 @@ static class TodoGenerator
 
     internal static IEnumerable<Todos> GenerateTodos(int count = 5)
     {
-        var titleCount = _parts.Sum(row => row.Prefixes.Length * row.Suffixes.Length);
+        var titleCount = Parts.Sum(row => row.Prefixes.Length * row.Suffixes.Length);
         var titleMap = new (int Row, int Prefix, int Suffix)[titleCount];
         var mapCount = 0;
-        for (var i = 0; i < _parts.Length; i++)
+        for (var i = 0; i < Parts.Length; i++)
         {
-            var prefixes = _parts[i].Prefixes;
-            var suffixes = _parts[i].Suffixes;
+            var prefixes = Parts[i].Prefixes;
+            var suffixes = Parts[i].Suffixes;
             for (var j = 0; j < prefixes.Length; j++)
             {
                 for (var k = 0; k < suffixes.Length; k++)
@@ -61,7 +52,7 @@ static class TodoGenerator
         for (var id = 1; id <= count; id++)
         {
             var (rowIndex, prefixIndex, suffixIndex) = titleMap[id];
-            var (prefixes, suffixes) = _parts[rowIndex];
+            var (prefixes, suffixes) = Parts[rowIndex];
             yield return new Todos
             {
                 Id = id,

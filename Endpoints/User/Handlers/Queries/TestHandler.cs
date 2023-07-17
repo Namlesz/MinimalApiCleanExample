@@ -3,10 +3,8 @@ using MediatR;
 
 namespace Endpoints.User.Handlers.Queries;
 
-public class TestHandler : IRequestHandler<TestQuery, string>
+internal sealed class TestHandler : IRequestHandler<TestQuery, string>
 {
-    public Task<string> Handle(TestQuery request, CancellationToken cancellationToken)
-    {
-        return Task.FromResult("It's alive!");
-    }
+    public Task<string> Handle(TestQuery request, CancellationToken cancellationToken) =>
+        Task.FromResult("It's alive!");
 }

@@ -1,6 +1,6 @@
 namespace CleanMinimalApiExample.Abstract;
 
-public interface IEndpoints
+internal interface IEndpoints
 {
     public void EndpointsMapper(WebApplication app);
 }

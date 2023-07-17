@@ -1,11 +1,11 @@
 using CleanMinimalApiExample.Abstract;
+using Endpoints.Todo.Models;
 using Endpoints.Todo.Request.Query;
-using Endpoints.Todo.Services;
 using MediatR;
 
 namespace CleanMinimalApiExample.Endpoints;
 
-public class TodosEndpoints : IEndpoints
+internal sealed class TodosEndpoints : IEndpoints
 {
     public void EndpointsMapper(WebApplication app)
     {
@@ -32,7 +32,7 @@ public class TodosEndpoints : IEndpoints
             : Results.Ok(res);
     }
 
-    private async Task<IResult> GetTodos(HttpContext context, IMediator mediator)
+    private async Task<IResult> GetTodos(IMediator mediator)
     {
         var res = await mediator.Send(new TodosQuery());
         return Results.Ok(res);

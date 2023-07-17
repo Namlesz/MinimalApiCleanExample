@@ -2,7 +2,7 @@ using CleanMinimalApiExample.Abstract;
 
 namespace CleanMinimalApiExample.Startup;
 
-public static class WebApplicationExtension
+internal static class WebApplicationExtension
 {
     public static WebApplication MapEndpoints(this WebApplication app)
     {

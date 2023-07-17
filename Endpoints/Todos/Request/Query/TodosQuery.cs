@@ -1,6 +1,6 @@
-using Endpoints.Todo.Services;
+using Endpoints.Todo.Models;
 using MediatR;
 
 namespace Endpoints.Todo.Request.Query;
 
-public record TodosQuery : IRequest<Todos[]>;
+public sealed record TodosQuery : IRequest<Todos[]>;
