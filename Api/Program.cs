@@ -1,6 +1,6 @@
 using CleanMinimalApiExample.Startup;
-using Endpoints.Todo;
-using Endpoints.User;
+using Todos;
+using User;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services

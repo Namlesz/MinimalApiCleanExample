@@ -1,4 +1,4 @@
-using CleanMinimalApiExample.Abstract;
+using Shared.Abstract;
 
 namespace CleanMinimalApiExample.Startup;
 
@@ -11,11 +11,11 @@ internal static class WebApplicationExtension
         var classes = assemblies
             .Distinct()
             .SelectMany(x => x.GetTypes())
-            .Where(x => typeof(IEndpoints).IsAssignableFrom(x) && x is { IsInterface: false, IsAbstract: false });
+            .Where(x => typeof(IEndpoint).IsAssignableFrom(x) && x is { IsInterface: false, IsAbstract: false });
 
         foreach (var classe in classes)
         {
-            var instance = Activator.CreateInstance(classe) as IEndpoints;
+            var instance = Activator.CreateInstance(classe) as IEndpoint;
             instance?.EndpointsMapper(app);
         }
 
