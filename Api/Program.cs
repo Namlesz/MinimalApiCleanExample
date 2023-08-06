@@ -1,15 +1,13 @@
 using CleanMinimalApiExample.Startup;
-using Todos;
-using User;
+using CleanMinimalApiExample.Startup.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .RegisterApiServices()
-    .RegisterUserServices()
-    .RegisterTodoServices();
+    .RegisterModules();
 
 var app = builder.Build();
 app.MapEndpoints()
-    .UseSwaggerConfig();
+    .InitSwagger();
 
 app.Run();

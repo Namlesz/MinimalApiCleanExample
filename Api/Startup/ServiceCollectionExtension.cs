@@ -4,7 +4,7 @@ namespace CleanMinimalApiExample.Startup;
 
 internal static class ServiceCollectionExtension
 {
-    public static IServiceCollection RegisterApiServices(this IServiceCollection services)
+    internal static IServiceCollection RegisterApiServices(this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(opt =>
