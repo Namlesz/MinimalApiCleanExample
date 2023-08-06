@@ -1,5 +1,6 @@
-# Clean minimal Api example
+# Minimal Api - modules approach
 ### Work in progress
 ## TODO:
-- create separated scope per module
-- move to nuget ? (IEndpoint, MapEndpoints())
+- add more practical modules
+- use in-memory db for database example
+- add some services
